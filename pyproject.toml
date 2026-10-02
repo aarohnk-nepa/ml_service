@@ -9,13 +9,25 @@ dependencies = [
     "fastparquet>=2026.5.0",
     "httpx>=0.28.1",
     "ipykernel>=7.3.0",
+    "ipython>=9.17.1",
+    "matplotlib>=3.11.2",
+    "nbformat>=4.2.0",
     "numpy>=2.5.3",
     "pandas>=3.0.6",
+    "plotly>=7.1.0",
     "psycopg2>=2.9.13",
     "pyarrow>=25.0.1",
+    "scikit-learn>=1.9.1",
+    "shap>=0.52.0",
+    "sqlacodegen>=4.0.4",
     "sqlalchemy>=2.0.54",
+    "statsmodels>=0.15.0",
     "uvicorn[standard]>=0.53.0",
+    "xgboost>=3.4.1",
 ]
 
 [tool.setuptools.packages.find]
 include = ["app*"]
+
+[tool.uv]
+package = true
