@@ -116,7 +116,7 @@ class KPIDataset():
         for col in cols:
             pacf_vals, confint = pacf(
                 df_explore[col],
-                nlags=32,
+                nlags=32, # 500
                 method="ywm",
                 alpha=0.005
             )
@@ -151,8 +151,21 @@ class KPIDataset():
         cols_to_drop_agg = [
             col for col in df_explore.columns if (col.endswith("_sum") or col.endswith("_mean") or col.endswith("_<lambda_0>")) and col not in keep_agg
         ]
+        # uncomment if n lag = 500 and alpha=0.005
+        # cols_to_drop_lag = [
+        #     "qty_lag_81", "qty_lag_19", "qty_lag_44", "rev_lag_44", "rev_lag_262", 
+        #     "rev_lag_81", "rev_lag_225", "rev_lag_71", "rev_lag_258", "rev_lag_117", 
+        #     "rev_lag_43", "rev_lag_36", "rev_lag_16", "rev_lag_88", "rev_lag_114", 
+        #     "rev_lag_50", "qty_lag_123", "rev_lag_15", "rev_lag_10", 
+        #     "qty_lag_8", "qty_lag_9", "qty_lag_10", "qty_lag_15", "qty_lag_16", 
+        #     "qty_lag_36", "qty_lag_37", "qty_lag_64", "qty_lag_71", "qty_lag_85", 
+        #     "qty_lag_114", "qty_lag_117", "qty_lag_131", "qty_lag_144", "qty_lag_150", 
+        #     "qty_lag_225", "rev_lag_8", "rev_lag_9", "rev_lag_362"
+        # ] 
+
         df_explore.drop(columns=cols_to_drop_ma, inplace=True)
         df_explore.drop(columns=cols_to_drop_agg, inplace=True)
+        # df_explore.drop(columns=cols_to_drop_lag, inplace=True)
         self.df_kpi_forecasting = df_explore
         
 dataset: pd.DataFrame = KPIDataset().df_kpi_forecasting
