@@ -12,6 +12,13 @@ class KPIDataset():
             ams.invoice_date,
             amsl.nepa_cogs_price, amsl.discount, amsl.price_unit
         """
+        self.joins = """
+            LEFT JOIN product_product pp ON pp.id = amsl.product_id
+            JOIN product_template pt on pt.id = pp.product_tmpl_id
+        """
+        self.where = """
+            AND (pp.type = 'consu' OR amsl.product_id IS NULL)
+        """
         self.dates = ["2023-12-01", "2024-12-01", "2025-12-01", "2026-09-13"]
 
         self._extract_data()
