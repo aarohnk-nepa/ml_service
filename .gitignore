@@ -14,3 +14,7 @@ wheels/
 
 # data extracted on device
 app/data/extract
+
+
+# misc
+setup_kernel.sh
