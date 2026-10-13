@@ -15,5 +15,6 @@ wheels/
 # data extracted on device
 app/data/extract
 
-
 # misc
+# ml_service.egg-info
+artifacts
